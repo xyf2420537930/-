@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>TIME</th>
+        <th>USERNAME</th>
+        <th>GID</th>
+        <th>PRICE</th>
+        <th>STATUS</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="order : ${orders}">
+        <td th:text="${order.id}"></td>
+        <td th:text="${order.time}"></td>
+        <td th:text="${order.username}"></td>
+        <td th:text="${order.gid}"></td>
+        <td th:text="${order.price}"></td>
+        <td th:text="${order.status}"></td>
+        <td><a th:text="完成订单" th:href="@{/order/changeStatus/}+${order.id}" th:if="${session.level} == ('admin')"></a></td>
+        <td><a th:text="删除" th:href="@{/order/delete/}+${order.id}" th:if="${session.level} == ('admin')"></a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<form th:action="@{/user/insert}" th:method="post">
+    <label>
+        用户名<input name="username" type="text">
+        密码<input name ="password" type="password">
+        余额<input name="money" type="text">
+        <a style="color: #dc3545" th:text="${message}" th:if="${not #strings.isEmpty(message)}"></a>
+        <button type="submit">注册</button>
+    </label>
+</form>
+</body>
+</html>

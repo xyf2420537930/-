@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>USERNAME</th>
+        <th>PASSWORD</th>
+        <th>MONEY</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="user : ${users}">
+        <td th:text="${user.username}"></td>
+        <td th:text="${user.password}"></td>
+        <td th:text="${user.money}"></td>
+        <td><a th:href="@{/user/delete/}+${user.username}">删除</a></td>
+    </tr>
+    </tbody>
+</table>
+</body>
+</html>

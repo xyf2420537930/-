@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<h1 th:text="'欢迎用户'+${session.username}"></h1>
+<h2 th:text="'余额：'+${money}"></h2>
+<hr>
+<a th:href="@{/user/moneyUp}">余额充值！</a>
+<hr>
+<a th:href="@{/goods/findAll}">购物去！</a>
+<hr>
+<a th:href="@{/order/findAll}">我的订单</a>
+<hr>
+<a th:href="@{/goods/findKilled}">今日秒杀！</a>
+<hr>
+</body>
+</html>

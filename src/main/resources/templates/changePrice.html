@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>NAME</th>
+        <th>COUNT</th>
+        <th>PRICE</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+        <td th:text="${goods.id}"></td>
+        <td th:text="${goods.name}"></td>
+        <td th:text="${goods.count}"></td>
+        <td th:text="${goods.cost}"></td>
+    </tr>
+    </tbody>
+</table>
+<form th:action="@{/goods/changePrice}" th:method="post">
+    <input type="hidden" name="id" th:value="${goods.id}">
+    请输入更改的Price<input type="text" name="price">
+    <button type="submit">submit</button>
+</form>
+</body>
+</html>

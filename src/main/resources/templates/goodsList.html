@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<table>
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>NAME</th>
+            <th>COUNT</th>
+            <th>COST</th>
+            <th th:if="${session.level} == ('admin')">KILL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr th:each="good : ${goods}">
+            <td th:text="${good.id}"></td>
+            <td th:text="${good.name}"></td>
+            <td th:text="${good.count}"></td>
+            <td th:text="${good.cost}"></td>
+            <td th:text="${good.kill}" th:if="${session.level} == ('admin')"></td>
+            <td>
+                <form th:action="@{/order/toBuy}" th:method="post" th:if="${session.level} == ('consumer')">
+                    <input th:type="hidden" name="username" th:value="${session.username}">
+                    <input th:type="hidden" name="gid" th:value="${good.id}">
+                    <input th:type="hidden" name="cost" th:value="${good.cost}">
+                    <button th:type="submit">购买</button>
+                </form>
+            </td>
+            <td><a th:text="修改" th:href="@{/goods/find/}+${good.id}" th:if="${session.level} == ('admin')"></a></td>
+            <td><a th:text="删除" th:href="@{/goods/delete/}+${good.id}" th:if="${session.level} == ('admin')"></a></td>
+            <td><a th:text="设置为秒杀" th:href="@{/goods/kill/}+${good.id}" th:if="${session.level} == ('admin')"></a></td>
+        </tr>
+    </tbody>
+</table>
+<a th:href="@{/toInsert}" th:if="${session.level} == ('admin')">点击这里可以添加商品信息</a>
+</body>
+</html>
